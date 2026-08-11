@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Panel - SFX TECH</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="toast"></div>
+
+  <!-- =========================
+       ADMIN NAVBAR
+       ========================= -->
+
+  <header class="navbar admin-navbar">
+
+    <div class="brand">
+
+      <img
+        src="sfx tech.jpg"
+        alt="SFX TECH"
+      >
+
+      <span>
+        ADMIN PANEL
+      </span>
+
+    </div>
+
+    <nav>
+
+      <a href="index.html">
+        Website
+      </a>
+
+      <button
+        type="button"
+        onclick="logoutUser()"
+        class="logout-btn"
+      >
+        Logout
+      </button>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =========================
+       ADMIN DASHBOARD
+       ========================= -->
+
+  <main class="admin-container">
+
+    <div class="admin-header">
+
+      <div>
+
+        <p class="small-label">
+          SFX TECH
+        </p>
+
+        <h1>
+          Admin Dashboard
+        </h1>
+
+      </div>
+
+      <button
+        type="button"
+        class="secondary-btn"
+        onclick="loadAdminData()"
+      >
+        Refresh
+      </button>
+
+    </div>
+
+
+    <!-- =========================
+         STATS
+         ========================= -->
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+
+        <span>
+          Pending
+        </span>
+
+        <strong id="pendingCount">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span>
+          Approved
+        </span>
+
+        <strong id="approvedCount">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span>
+          Rejected
+        </span>
+
+        <strong id="rejectedCount">
+          0
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         CUSTOMER ORDERS
+         ========================= -->
+
+    <section class="admin-section">
+
+      <div class="section-heading">
+
+        <p class="small-label">
+          ORDERS
+        </p>
+
+        <h2>
+          Customer Orders
+        </h2>
+
+      </div>
+
+
+      <div
+        id="adminOrders"
+        class="admin-orders"
+      >
+
+        <div class="loading">
+          Loading orders...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVITY
+         ========================= -->
+
+    <section class="admin-section">
+
+      <div class="section-heading">
+
+        <p class="small-label">
+          HISTORY
+        </p>
+
+        <h2>
+          Activity
+        </h2>
+
+      </div>
+
+
+      <div
+        id="activityList"
+        class="activity-list"
+      >
+
+        <div class="loading">
+          Loading activity...
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       SUPABASE
+       ========================= -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="app.js"></script>
+
+
+  <!-- =========================
+       ADMIN ACCESS CHECK
+       ========================= -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      async () => {
+
+        console.log(
+          "SFX TECH: Checking admin access..."
+        );
+
+        try {
+
+          const user =
+            await getCurrentUser();
+
+          if (!user) {
+
+            window.location.href =
+              "index.html";
+
+            return;
+          }
+
+
+          const profile =
+            await getProfile(user.id);
+
+
+          console.log(
+            "ADMIN USER:",
+            user.email
+          );
+
+          console.log(
+            "ADMIN PROFILE:",
+            profile
+          );
+
+
+          if (
+            !profile ||
+            profile.role !== "admin"
+          ) {
+
+            alert(
+              "Access Denied"
+            );
+
+            window.location.href =
+              "index.html";
+
+            return;
+          }
+
+
+          console.log(
+            "ADMIN ACCESS GRANTED"
+          );
+
+
+          /*
+            Admin data load
+          */
+
+          if (
+            typeof loadAdminData ===
+            "function"
+          ) {
+
+            await loadAdminData();
+
+          } else {
+
+            console.error(
+              "loadAdminData() function app.js me nahi mila."
+            );
+
+          }
+
+        } catch (error) {
+
+          console.error(
+            "ADMIN INITIALIZATION ERROR:",
+            error
+          );
+
+          alert(
+            "Admin panel load nahi ho saka."
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>

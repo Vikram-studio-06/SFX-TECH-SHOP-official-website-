@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>SFX TECH - XML Store</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+
+<body>
+
+  <!-- ==================================================
+       AUTH SECTION
+  =================================================== -->
+
+  <section
+    id="authSection"
+    class="auth-page"
+  >
+
+    <div class="auth-card">
+
+      <!-- LOGO -->
+
+      <img
+        src="sfx tech.jpg"
+        class="logo"
+        alt="SFX TECH"
+      >
+
+
+      <h1>SFX TECH</h1>
+
+      <p class="subtitle">
+        Premium Video Editing XML Store
+      </p>
+
+
+      <!-- ==================================================
+           LOGIN
+      =================================================== -->
+
+      <div id="loginBox">
+
+  <h2>Login</h2>
+
+  <input
+    id="loginEmail"
+    type="email"
+    placeholder="Email"
+    autocomplete="email"
+  >
+
+  <input
+    id="loginPassword"
+    type="password"
+    placeholder="Password"
+    autocomplete="current-password"
+  >
+
+  <button
+    type="button"
+    class="primary-btn"
+    onclick="loginUser()"
+  >
+    Login
+  </button>
+
+  <p class="switch-text">
+    Don't have an account?
+
+    <button
+      type="button"
+      class="text-btn"
+      onclick="showSignup()"
+    >
+      Create Account
+    </button>
+  </p>
+
+</div>
+
+
+<div id="signupBox" class="hidden">
+
+  <h2>Create Account</h2>
+
+  <input
+    id="signupName"
+    type="text"
+    placeholder="Your Name"
+    autocomplete="name"
+  >
+
+  <input
+    id="signupEmail"
+    type="email"
+    placeholder="Email"
+    autocomplete="email"
+  >
+
+  <input
+    id="signupPassword"
+    type="password"
+    placeholder="Password"
+    autocomplete="new-password"
+  >
+
+  <button
+    type="button"
+    class="primary-btn"
+    onclick="signupUser()"
+  >
+    Create Account
+  </button>
+
+  <p class="switch-text">
+    Already have an account?
+
+    <button
+      type="button"
+      class="text-btn"
+      onclick="showLogin()"
+    >
+      Login
+    </button>
+  </p>
+
+</div>
+
+  </section>
+
+
+
+  <!-- ==================================================
+       MAIN WEBSITE
+  =================================================== -->
+
+  <section
+    id="mainSection"
+    class="hidden"
+  >
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+  <div class="brand">
+    <img src="sfx tech.jpg" alt="SFX TECH">
+    <span>SFX TECH</span>
+  </div>
+
+  <!-- ONLY HAMBURGER -->
+  <div class="hamburger-wrapper">
+
+    <button
+      type="button"
+      class="hamburger-btn"
+      onclick="toggleMenu()"
+      aria-label="Menu"
+    >
+      ☰
+    </button>
+
+    <!-- MENU INSIDE HAMBURGER -->
+    <div id="mobileMenu" class="mobile-menu">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="downloads.html">
+        My Downloads
+      </a>
+
+      <a
+        href="admin.html"
+        id="adminMenuLink"
+        style="display:none;"
+      >
+        Admin Panel
+      </a>
+
+      <button
+        type="button"
+        onclick="logoutUser()"
+      >
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+
+    <!-- ==================================================
+         HERO
+    =================================================== -->
+
+    <main>
+
+      <section class="hero">
+
+        <div>
+
+          <p class="small-label">
+            SFX TECH XML STORE
+          </p>
+
+
+          <h1>
+            Premium XML Files
+            <br>
+            For Video Editors
+          </h1>
+
+
+          <p>
+            Buy once, get approved,
+            and download your XML anytime.
+          </p>
+
+
+          <a
+            href="#products"
+            class="primary-btn hero-btn"
+          >
+            View XMLs
+          </a>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==================================================
+           PRODUCTS
+      =================================================== -->
+
+      <section
+        id="products"
+        class="products-section"
+      >
+
+        <div class="section-heading">
+
+          <p class="small-label">
+            OUR PRODUCTS
+          </p>
+
+
+          <h2>
+            Available XML Files
+          </h2>
+
+        </div>
+
+
+        <div id="productsGrid" class="products-grid">
+  <div class="loading">Loading products...</div>
+</div>
+
+      </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <p>
+        © 2026 SFX TECH.
+        All Rights Reserved.
+      </p>
+
+    </footer>
+
+  </section>
+
+
+
+  <!-- ==================================================
+       SUPABASE
+  =================================================== -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
+
+</body>
+
+</html>

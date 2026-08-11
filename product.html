@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Product - SFX TECH</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div id="toast"></div>
+
+
+<header class="navbar">
+
+  <div class="brand">
+
+    <img
+      src="sfx tech.jpg"
+      alt="SFX TECH"
+    >
+
+    <span>
+      SFX TECH
+    </span>
+
+  </div>
+
+
+  <nav>
+
+    <a href="index.html">
+      Home
+    </a>
+
+    <a href="downloads.html">
+      My Downloads
+    </a>
+
+    <button
+      onclick="logoutUser()"
+      class="logout-btn"
+    >
+      Logout
+    </button>
+
+  </nav>
+
+
+</header>
+
+
+
+<main class="product-page">
+
+
+  <div
+    id="productDetails"
+    class="product-details"
+  >
+
+    <div class="loading">
+      Loading product...
+    </div>
+
+
+  </div>
+
+
+</main>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>

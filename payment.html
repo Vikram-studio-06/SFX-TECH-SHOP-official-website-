@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - SFX TECH</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="toast"></div>
+
+  <header class="navbar">
+    <div class="brand">
+      <img src="sfx tech.jpg" alt="SFX TECH">
+      <span>SFX TECH</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="downloads.html">My Downloads</a>
+      <button onclick="logoutUser()" class="logout-btn">Logout</button>
+      
+    </nav>
+  </header>
+
+  <main class="payment-page">
+
+    <div class="payment-card">
+
+      <p class="small-label">ORDER PAYMENT</p>
+      <h1>Complete Your Payment</h1>
+
+      <div id="paymentProduct">
+        <div class="loading">Loading...</div>
+      </div>
+
+      <div class="payment-image-box">
+        <img src="all in one pay.jpg" alt="Payment / UPI">
+      </div>
+
+      <div class="upi-box">
+
+  <span>UPI ID</span>
+
+  <div class="upi-copy-box">
+
+    <strong id="upiId">
+      satyam48411@ptyes
+    </strong>
+
+    <button
+      type="button"
+      onclick="copyUPI()"
+    >
+      Copy
+    </button>
+
+  </div>
+
+</div>
+
+      <div class="upload-box">
+
+        <label for="paymentScreenshot">
+          Upload Payment Screenshot
+        </label>
+
+        <input
+          id="paymentScreenshot"
+          type="file"
+          accept="image/png,image/jpeg,image/jpg,image/webp"
+        >
+
+        <p id="fileName" class="file-name">No file selected</p>
+
+      </div>
+
+      <button
+        id="submitPaymentBtn"
+        class="primary-btn full-btn"
+        onclick="submitPayment()"
+      >
+        Submit Payment
+      </button>
+
+      <p class="note">
+        Your order will remain pending until the admin verifies your payment.
+      </p>
+
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
